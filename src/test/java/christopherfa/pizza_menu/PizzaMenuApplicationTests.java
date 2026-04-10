@@ -38,7 +38,6 @@ class PizzaMenuApplicationTests {
         assertTrue(t.getPrice() > 0, "Il prezzo del topping " + beanName + " deve essere maggiore di zero");
     }
 
-    //
     // totale ordine con coperto e pizza extra
     @Test
     void testCalcoloTotaleOrdine() {
@@ -52,5 +51,13 @@ class PizzaMenuApplicationTests {
         o.getElementiOrdine().add(p);
 
         assertEquals(9.0, o.getTotale(), "Il totale (5€ pizza + 4€ coperti) deve essere 9.0€");
+    }
+
+    // calorie totali di una pizza composta
+    @Test
+    void testHawaiianPizzaCalories() {
+        Pizza hawaiian = ctx.getBean("hawaiianPizza", Pizza.class);
+
+        assertEquals(1024, hawaiian.getCalories());
     }
 }
